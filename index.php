@@ -2,22 +2,21 @@
 
 require_once("vendor/autoload.php");
 
-$app = new \Slim\Slim();
+use \Slim\Slim;               //- para definir rotas.
+use \Hcode\Page;
+
+$app = new Slim();
 
 $app->config('debug', true);
 
-$app->get('/', function() {
-    
-	//echo "OK";
+$app->get('/', function() {   //aqui são definidas as rotas. Neste caso "/" é a raiz.
 
-	$sql = new Hcode\DB\Sql();
+	$page = new Page();       //chama a classe Page. Esta classe posso o construct e o destruct, que são executados assim que instanciada a classe. Dentro do construct chama o header, e no destruct chama o footer.
 
-	$results = $sql->select("SELECT * FROM tb_users");
-
-	echo json_encode($results);
+	$page->setTpl("index");   //chama o método que tras o body html.
 
 });
 
-$app->run();
+$app->run();                  //aqui chama as rotas.
 
  ?>
