@@ -13,13 +13,13 @@ class Page
 	];
 
 	//como no template eu preciso passar var.(key => value), criamos arrays($opts = array()) para passar as mesmas. Mas caso este array venha vazio, criamos o array $default[data[]] com valores de default. Então fazemos um merge dos 2 arrays, caso um ñ substitua o outro, as inf. serão somadas em um outra array $options.
-	public function __construct($opts = array())
+	public function __construct($opts = array(), $tpl_dir = "/views/")
 	{
-			$this->options = array_merge($this->defaults, $opts);
+		$this->options = array_merge($this->defaults, $opts);
 
 		// config
 		$config = array(
-						"tpl_dir"       => $_SERVER["DOCUMENT_ROOT"]."/views/",       //DOCUMENT_ROOT-retorna a raiz.
+						"tpl_dir"       => $_SERVER["DOCUMENT_ROOT"].$tpl_dir,       //DOCUMENT_ROOT-retorna a raiz.
 						"cache_dir"     => $_SERVER["DOCUMENT_ROOT"]."/views-cache/",
 						"debug"         => false // set to false to improve the speed
 					   );
