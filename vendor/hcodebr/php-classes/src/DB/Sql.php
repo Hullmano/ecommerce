@@ -27,7 +27,7 @@ class Sql {
 
 		foreach ($parameters as $key => $value) {
 			
-			$this->bindValue($statement, $key, $value);
+			$this->bindParam($statement, $key, $value);
 
 		}
 
@@ -36,7 +36,7 @@ class Sql {
 	private function bindParam($statement, $key, $value)
 	{
 
-		$statement->bindValue($key, $value);
+		$statement->bindParam($key, $value);
 
 	}
 
